@@ -98,6 +98,24 @@
   .prev { left: -40px; }
   .prev:hover, .next:hover {background-color: rgba(0,0,0,0.8);}
 
+  .whatsapp-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25d366;
+  border-radius: 50%;
+  text-align: center;
+  box-shadow: 2px 2px 5px #999;
+  z-index: 100;
+}
+
+.whatsapp-float img {
+  width: 35px;
+  margin-top: 12px;
+}
+    
   </style>
 </head>
 <body>
@@ -218,5 +236,8 @@
   // Cambio automático cada 3 segundos
   setInterval(function(){ plusSlides(1); }, 3000);
    </script>
+  <a href="https://wa.me/50576687789" class="whatsapp-float" target="_blank">
+  <img src="imagelogo.png" alt="WhatsApp" />
+  </a>
 </body>
 </html>
