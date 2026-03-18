@@ -172,8 +172,102 @@
   width: 60px;
   margin-top: 12px;
 }
-    
+
+.pedido {
+  background-color: #f9f9f9;
+  padding: 25px;
+  margin: 20px 0;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.pedido h2 {
+  color: #800080; /* tu color de marca */
+  margin-bottom: 15px;
+}
+
+.pedido label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+.pedido input, .pedido textarea {
+  width: 90%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.pedido input[type="submit"] {
+  background-color: #800080;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.pedido input[type="submit"]:hover {
+  background-color: #ffb703;
+}
+
+  .texto-pago {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #555;
+  font-style: italic;
+}
+    .pagos {
+  background-color: #f9f9f9;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.pagos h2 {
+  color: #800080;
+  margin-bottom: 15px;
+}
+
+.metodos-pago {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap; /* permite que se acomoden en varias filas */
+}
+
+.pago {
+  text-align: center;
+  flex: 1 1 120px; /* cada bloque ocupa espacio flexible */
+}
+
+.pago svg {
+  margin-bottom: 8px;
+}
+
+.pago p {
+  font-weight: bold;
+  color: #333;
+}
+
+/* Responsivo para pantallas pequeñas */
+@media (max-width: 600px) {
+  .metodos-pago {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+}
+        
   </style>
+
+  
 </head>
 <body>
   <header class="encabezado">
@@ -187,6 +281,7 @@
 
   <nav>
     <a href="#catalogo">Catálogo</a>
+    <a href="#pedido-general">Pedido</a>
     <a href="#ubicacion">Ubicación</a>
     <a href="#horario">Horario</a>
     <a href="#contacto">Contacto</a>
@@ -268,6 +363,44 @@
     
   </section>
 
+  <section id="pedido-general" class="pedido">
+  <h2>Haz tu Pedido</h2>
+  <form onsubmit="enviarWhatsApp(event)">
+    <label>Tu Nombre:</label>
+    <input type="text" id="nombre" required><br>
+
+    <label>Producto o servicio que deseas:</label>
+    <input type="text" id="producto" required><br>
+
+    <label>Cantidad:</label>
+    <input type="number" id="cantidad" required><br>
+
+    <label>Fecha que lo necesitas:</label>
+    <input type="date" id="fecha" required><br>
+
+    <p>⚠️ Adjunta tu imagen de referencia directamente en el chat de WhatsApp.</p>
+
+    <input type="submit" value="Enviar Pedido por WhatsApp">
+  </form>
+</section>
+
+  <script>
+function enviarWhatsApp(event) {
+  event.preventDefault();
+  const nombre = document.getElementById('nombre').value;
+  const producto = document.getElementById('producto').value;
+  const cantidad = document.getElementById('cantidad').value;
+  const fecha = document.getElementById('fecha').value;
+
+  const mensaje = `Hola, soy ${nombre}. Quiero pedir:\nProducto: ${producto}\nCantidad: ${cantidad}\nFecha: ${fecha}\nAdjunto mi imagen de referencia en este chat.`;
+
+  const url = `https://wa.me/50576687789?text=${encodeURIComponent(mensaje)}`;
+  window.open(url, '_blank');
+}
+</script>
+  
+
+  
   <section id="ubicacion">
     <h2>Ubicación</h2>
     <p>📍 Reparto 18 de Agosto, Barrio Guadalupe, León, Nicaragua</p>
@@ -284,6 +417,36 @@
   </ul>
   </section>
 
+  <section id="pagos" class="pagos">
+  <h2>Formas de Pago</h2>
+  <div class="metodos-pago">
+    <div class="pago">
+      <!-- Ícono de efectivo -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#800080" viewBox="0 0 24 24">
+        <path d="M2 6h20v12H2V6zm2 2v8h16V8H4zm8 2a2 2 0 110 4 2 2 0 010-4z"/>
+      </svg>
+      <p>Efectivo</p>
+    </div>
+    <div class="pago">
+      <!-- Ícono de billetera móvil -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#800080" viewBox="0 0 24 24">
+        <path d="M3 7h18v10H3V7zm2 2v6h14V9H5zm10 1a1 1 0 110 2 1 1 0 010-2z"/>
+      </svg>
+      <p>Billetera Móvil Banpro</p>
+    </div>
+    <div class="pago">
+      <!-- Ícono de transferencia bancaria -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#800080" viewBox="0 0 24 24">
+        <path d="M12 2l9 4v2H3V6l9-4zm-9 8h18v2H3v-2zm0 4h18v8H3v-8z"/>
+      </svg>
+      <p>Transferencia Lafise</p>
+    </div>
+  </div>
+
+  <!-- Texto de confianza -->
+  <p class="texto-pago">Tu compra segura con los métodos de pago más confiables</p>
+</section>
+  
   <footer id="contacto">
     <h2>Conéctate con nosotros</h2>
     <div class="social-icons">
