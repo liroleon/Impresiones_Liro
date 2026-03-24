@@ -275,18 +275,18 @@
   iframe.pedidolibreria{
     width: 95%;   /* reduce un poquito el ancho */
     margin: 0 auto;
-    display: block;
+    display: flex;
     }
 }
 iframe.pedidolibreria {
-  width: 95%;
+  width: 100%;
   margin: 0 auto;
-  display: block;
+  display: flex;
 }
     
     /* Mapa: siempre ancho */
 iframe.mapa {
-  width: 95%;
+  width: 100%;
   height: 350px; /* puedes ajustar la altura */
 }
 
@@ -294,6 +294,8 @@ iframe.mapa {
 @media (max-width: 500px) {
   iframe.mapa {
     height: 300px;
+    display: flex;
+     margin: 0 auto;
   }
 }
     
